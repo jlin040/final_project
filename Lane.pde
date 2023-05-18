@@ -13,29 +13,27 @@ class Lane{
   float lanespeedX;
   int type;// 0 for nothing, 1 for cars, 2 for logs ( maybe implement trains, lily pads)
   float speed;
+  
+  
   void car(){
     if(type == 1){
-      row = new ArrayList<Obstacle>();
-  
-      for( int i = 0; i < numob; i++){                      
-        row.add(new Obstacle(width-(i * (width/numob)), false, false));
-      }
-      for( int i = 0; i < numob; i++){
+      int maxw = width/numob;
+      
+      
+      for(int i=-2; i < numob;i++){
         fill(0,255,0);
-        rect(row.get(i).x+speed, y, 30, tile);
-        speed+=lanespeedX*.3;
-        if(row.get(i).x+speed>width){
-          row.remove(i);
-        row.add(new Obstacle(i * (width/numob)-width+100 , false, false))
-        ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+        rect(i*maxw+lanespeedX,y,30,50);
+        lanespeedX+=.1;
+        if(lanespeedX>=maxw)
+        lanespeedX=0;
         
+        
+     
       }
-        
-        
-        
-      }}
+      
+    }
       
    
   }
-  
+
 }
