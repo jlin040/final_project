@@ -43,6 +43,4 @@ if(screen.get(i).y> height){
 }
  
     
-    
-  
 }

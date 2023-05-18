@@ -17,17 +17,17 @@ class Lane{
     if(type == 1){
       row = new ArrayList<Obstacle>();
   
-      for( int i = 0; i < numob; i++){
+      for( int i = 0; i < numob; i++){                      
         row.add(new Obstacle(width-(i * (width/numob)), false, false));
       }
       for( int i = 0; i < numob; i++){
         fill(0,255,0);
         rect(row.get(i).x+speed, y, 30, tile);
         speed+=lanespeedX*.3;
-        if(row.get(i).x+speed-100>width){
+        if(row.get(i).x+speed>width){
           row.remove(i);
-        row.add(new Obstacle(width-(i * (width/numob)), false, false))
-        ;
+        row.add(new Obstacle(i * (width/numob)-width+100 , false, false))
+        ;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
         
       }
         
