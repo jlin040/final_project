@@ -4,7 +4,7 @@ class Lane{
     lanespeedX = s;
     numob = num;
     this.y = y;
-    w=random(width)/numob-1;
+    w=constrain(random(width)/numob, 60, 90);
   }
   Lane(int t){
     type = t;}
@@ -50,7 +50,7 @@ class Lane{
       
       for(int i=-2; i < numob;i++){
         fill(0,0,255);
-        rect(i*maxw+lanespeedX,y,30,50);
+        rect(i*maxw+lanespeedX,y,w,50);
         lanespeedX+=.1;
         if(lanespeedX>=maxw)
         lanespeedX=0;
