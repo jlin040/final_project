@@ -23,20 +23,27 @@ class Lane{
     if(type == 1){
       int maxw = width/numob;
       
-      
+      if(lanespeedX>0){
       for(int i=-2; i < numob;i++){
         
         fill(0,255,0);
         rect(i*maxw+lanespeedX,y,w,50);
+        if(lanespeedX>0){
         lanespeedX+=.1;
-        if(lanespeedX>=maxw)
-        lanespeedX=0;
-        
+      if(Math.abs(lanespeedX)>=maxw)
+        lanespeedX=.0000001;}}
+      
         
      
       }
-      
-    }
+      if(lanespeedX<0){
+      for(int i=0; i < numob+2;i++){
+        fill(0,255,0);
+        rect(i*maxw+lanespeedX,y,w,50);
+        lanespeedX-=.1;
+        if(Math.abs(lanespeedX)>=maxw)
+        lanespeedX=-.000001;}
+    }}
     if(type == 2){
       int maxw = width/numob;
       
