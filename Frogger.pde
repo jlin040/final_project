@@ -13,10 +13,11 @@ x = 7;
 y=17;
 }
 color[] colors;
+
+boolean gameStarted = false;
  
    
  
-
 
 
 float x;
@@ -38,7 +39,7 @@ void draw(){
     color c = colors[screen.get(i).type];
     fill(c);
     rect(0, screen.get(i).y,width,tile);
-  screen.get(i).y+=.9;
+  if (gameStarted ) screen.get(i).y+=.9;
 if(screen.get(i).y> height){
   screen.remove(i);
   screen.add(0,new Lane((int) random(3),(float)( (random(3)+1)*Math.pow(-1,(int)random(2))),  (int) constrain(random(8),3,4), i*tile-200));
@@ -57,12 +58,16 @@ frog();
 
 void keyPressed(){
  if(keyCode == LEFT) {
+   gameStarted = true;
    x--;}
    if(keyCode == RIGHT) {
+   gameStarted = true;
    x++;}
    if(keyCode == UP) {
+   gameStarted = true;
    y--;}
    if(keyCode == DOWN) {
+   gameStarted = true;
    y++;}
   
   
