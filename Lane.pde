@@ -43,7 +43,8 @@ class Lane{
         lanespeedX-=.1;
         if(Math.abs(lanespeedX)>=maxw)
         lanespeedX=-.000001;}
-    }}
+      }
+    }
     if(type == 2){
       int maxw = width/numob;
       
