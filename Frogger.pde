@@ -39,9 +39,10 @@ void draw() {
     }
 
     screen.get(i).car();
+    if(y*40>=screen.get(i).y&& y*40 <= screen.get(i).y + tile){
     if (screen.get(i).ison(x*40, y *40)) {
       System.out.println("on");
-    }
+    }}
 
 
     //if(screen.get(i).y+100> height){

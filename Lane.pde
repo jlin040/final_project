@@ -63,7 +63,7 @@ class Lane {
   boolean ison(float left, float right) {//only have to check left and right sides
     if (type ==1) {
       for (int i=-2; i < numob; i++) {
-        if (left<i*w+lanespeedX+30&& left>i*w+lanespeedX|| right > i*w+lanespeedX&&right < i*w+lanespeedX+30) {
+        if (left<i*width/numob+lanespeedX+w&& left>i*width/numob+lanespeedX|| right > i*width/numob+lanespeedX&&right < i*width/numob+lanespeedX+w) {
           System.out.println("gameover");
           return false;
         }
@@ -72,9 +72,10 @@ class Lane {
     } else if (type ==2) {
       for (int i=-2; i < numob; i++) {
         if (left<i*width/numob+lanespeedX+30&& left>i*width/numob+lanespeedX|| right > i*width/numob+lanespeedX&&right < i*width/numob+lanespeedX+30)
-          //System.out.println("gameover");
+          
           return true;
       }
+       System.out.println("gameover");
       return false;
     }
     return true;
