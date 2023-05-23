@@ -27,7 +27,7 @@ class Lane {
       if (lanespeedX>0) {
         for (int i=-2; i < numob; i++) {
 
-          fill(0, 255, 0);
+          fill(0, 0, 0);
           rect(i*maxw+lanespeedX, y, w, 50);
           if (lanespeedX>0) {
             lanespeedX+=.1;
@@ -38,7 +38,7 @@ class Lane {
       }
       if (lanespeedX<0) {
         for (int i=0; i < numob+2; i++) {
-          fill(0, 255, 0);
+          fill(0, 0, 0);
           rect(i*maxw+lanespeedX, y, w, 50);
           lanespeedX-=.1;
           if (Math.abs(lanespeedX)>=maxw)
@@ -51,7 +51,7 @@ class Lane {
 
 
       for (int i=-2; i < numob; i++) {
-        fill(0, 0, 255);
+        fill(#623322);
         rect(i*maxw+lanespeedX, y, w, 50);
 
         lanespeedX+=.1;
@@ -71,7 +71,7 @@ class Lane {
       return true;
     } else if (type ==2) {
       for (int i=-2; i < numob; i++) {
-        if (left<i*width/numob+lanespeedX+30&& left>i*width/numob+lanespeedX|| right > i*width/numob+lanespeedX&&right < i*width/numob+lanespeedX+30)
+        if (left<i*width/numob+lanespeedX+w&& left>i*width/numob+lanespeedX|| right > i*width/numob+lanespeedX&&right < i*width/numob+lanespeedX+w)
           
           return true;
       }
