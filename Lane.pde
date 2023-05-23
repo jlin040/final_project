@@ -60,24 +60,29 @@ class Lane {
       }
     }
   }
-  boolean ison(float left, float right) {//only have to check left and right sides
-    if (type ==1) {
-      for (int i=-2; i < numob; i++) {
-        if (left<i*width/numob+lanespeedX+w&& left>i*width/numob+lanespeedX|| right > i*width/numob+lanespeedX&&right < i*width/numob+lanespeedX+w) {
-          System.out.println("gameover");
-          return false;
-        }
+  boolean ison(float left, float right) {
+  if (type == 1) {
+    for (int i = -2; i < numob; i++) {
+      float obstacleLeft = i * (width / numob) + lanespeedX;
+      float obstacleRight = obstacleLeft + w;
+
+      if ((left >= obstacleLeft && left <= obstacleRight) || (right >= obstacleLeft && right <= obstacleRight)) {
+        System.out.println("gameover");
+        return false;
       }
-      return true;
-    } else if (type ==2) {
-      for (int i=-2; i < numob; i++) {
-        if (left<i*width/numob+lanespeedX+w&& left>i*width/numob+lanespeedX|| right > i*width/numob+lanespeedX&&right < i*width/numob+lanespeedX+w)
-          
-          return true;
-      }
-       System.out.println("gameover");
-      return false;
     }
     return true;
+  } else if (type == 2) {
+    for (int i = -2; i < numob; i++) {
+      float obstacleLeft = i * (width / numob) + lanespeedX;
+      float obstacleRight = obstacleLeft + w;
+
+      if ((left >= obstacleLeft && left <= obstacleRight) || (right >= obstacleLeft && right <= obstacleRight)) {
+        return true;
+      }
+    }
+    System.out.println("gameover");
+    return false;
   }
+  return true;
 }
