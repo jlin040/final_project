@@ -60,29 +60,13 @@ class Lane {
       }
     }
   }
-  boolean ison(float left, float right) {
-  if (type == 1) {
-    for (int i = -2; i < numob; i++) {
-      float obstacleLeft = i * (width / numob) + lanespeedX;
-      float obstacleRight = obstacleLeft + w;
-
-      if ((left >= obstacleLeft && left <= obstacleRight) || (right >= obstacleLeft && right <= obstacleRight)) {
-        System.out.println("gameover");
-        return false;
-      }
+  boolean ison(float left, float y) {
+    color c = get(int(left-1), int(y+10));
+    color v = get(int(left+1+w), int(y+10));
+    if ((c ==#277EBF && v == #277EBF) ||(c==#000000 || v ==#000000)) {
+      System.out.println("gameover");
+      return false;
     }
     return true;
-  } else if (type == 2) {
-    for (int i = -2; i < numob; i++) {
-      float obstacleLeft = i * (width / numob) + lanespeedX;
-      float obstacleRight = obstacleLeft + w;
-
-      if ((left >= obstacleLeft && left <= obstacleRight) || (right >= obstacleLeft && right <= obstacleRight)) {
-        return true;
-      }
-    }
-    System.out.println("gameover");
-    return false;
   }
-  return true;
-}}
+}
