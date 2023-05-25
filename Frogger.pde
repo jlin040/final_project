@@ -1,7 +1,7 @@
 int tile=50;
 ArrayList<Lane> screen = new ArrayList<Lane>();
 void setup() {
-  frameRate(30);
+  frameRate(60);
   size(800, 900);
   for ( int i = 0; i< 23; i++) {
     screen.add(new Lane((int) random(3), (float)( (random(3)+1)*Math.pow(-1, (int)random(2))), (int) constrain(random(8), 3, 4), i*tile-300));
@@ -39,10 +39,14 @@ void draw() {
     }
 
     screen.get(i).car();
-    if(y*40>=screen.get(i).y&& y*40 <= screen.get(i).y + tile){
-    if (screen.get(i).ison(x*40, y *40)) {
+    if(y*50+tile>=screen.get(i).y&& y*50+tile <= screen.get(i).y + tile){
+    if (screen.get(i).ison(x*50, y *50)) {
       System.out.println("on");
-    }}
+    }
+    else{
+      reset();}
+
+  }
 
 
     //if(screen.get(i).y+100> height){
@@ -57,6 +61,23 @@ void draw() {
   //  }
   //}
   frog();
+}
+
+void reset(){
+  for ( int i = 0; i< 23; i++) {
+    screen.remove(0);
+  }
+  for ( int i = 0; i< 23; i++) {
+    screen.add(new Lane((int) random(3), (float)( (random(3)+1)*Math.pow(-1, (int)random(2))), (int) constrain(random(8), 3, 4), i*tile-300));
+  }
+  screen.add( new Lane(0, 0, 0, height-tile));
+  //colors = new color[]{#528148, #333F48, #277EBF};
+  speed =.3;
+  x = 7;
+  y=17;
+  gameStarted = false;
+  
+  
 }
 
 void keyPressed() {
