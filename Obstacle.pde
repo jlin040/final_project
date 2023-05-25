@@ -1,9 +1,4 @@
 
-
-
-
-
-
 class Obstacle {
   float w;
   float x;
@@ -15,5 +10,8 @@ class Obstacle {
     safe = s;
     ison=i;
     this.w=w;
+  }
+  
+  void print() {
   }
 }
