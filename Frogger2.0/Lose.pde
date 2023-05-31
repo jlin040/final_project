@@ -14,7 +14,7 @@ void nextLevel() {
 			//go to the start, add a level, randomize the location of cars and logs, make speeds higher, reset life to 3
 			tx = (width/2)-25;
 			ty = height-70;	
-			logWidth = random(100,120);
+			logWidth = int(random(100,120));
 			level++;
 			difficulty++;
 			wonLevel = false;
@@ -26,29 +26,29 @@ void nextLevel() {
 			bottomLogSpeed = random(0.25*difficulty, 0.5*difficulty);
 			life = 3;
 			for (int i = 0; i < topCars.length; i++) {
-				topCars[i] = width*i/topCars.length + random(-width/12, width/12);
+				topCars[i] = int(width*i/topCars.length + random(-width/12, width/12));
 				topColor[i] = color(random(0, 255), random(0, 255), random(0, 255));
 			}
 
 			for (int i = 0; i < middleCars.length; i++) {
-				middleCars[i] = width*i/middleCars.length + random(-width/12, width/12);
+				middleCars[i] = int(width*i/middleCars.length + random(-width/12, width/12));
 				middleColor[i] = color(random(0, 255), random(0, 255), random(0, 255));
 			}
 
 			for (int i = 0; i < bottomCars.length; i++) {
-				bottomCars[i] = width*i/bottomCars.length + random(-width/12, width/12);
+				bottomCars[i] = int(width*i/bottomCars.length + random(-width/12, width/12));
 				bottomColor[i] = color(random(0, 255), random(0, 255), random(0, 255));
 			}
 			for (int i = 0; i < topLogs.length; i++) {
-				topLogs[i] = width*i/topLogs.length + random(-100, 100);
+				topLogs[i] = int(width*i/topLogs.length + random(-100, 100));
 			}
 
 			for (int i = 0; i < middleLogs.length; i++) {
-				middleLogs[i] = width*i/middleLogs.length + random(-100, 100);
+				middleLogs[i] = int(width*i/middleLogs.length + random(-100, 100));
 			}
 
 			for (int i = 0; i < bottomLogs.length; i++) {
-				bottomLogs[i] = width*i/bottomLogs.length + random(-100, 100);
+				bottomLogs[i] = int(width*i/bottomLogs.length + random(-100, 100));
 			}
 		}
 	}
@@ -73,9 +73,9 @@ void youLose() {
 		if (mousePressed) {
 			stop = false;
 			score = 0;
-			logWidth = random(100,120);
+			logWidth = int(random(100,120));
 			for (int i = 0; i < topCars.length - 4; i++) {
-				topCars.splice(0, 1);
+				topCars.splice(0, 0,0);
 				topColor.splice(0, 1);
 			}
 			for (int i = 0; i < middleCars.length - 4; i++) {

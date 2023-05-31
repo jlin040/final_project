@@ -30,40 +30,40 @@ void setup () {
 	//setting up topcars
 	for (int i = 0; i < topCars.length; i++) {
 		//putting the cars anywhere between these coordinates
-		topCars[i] = width*i/topCars.length + random(-width/12, width/12);
+		topCars[i] =int( width*i/topCars.length + random(-width/12, width/12));
 		//random colors
 		topColor[i] = color(random(0, 255), random(0, 255), random(0, 255));
 	}
 	//setting up middlecars
 	for (int i = 0; i < middleCars.length; i++) {
 		//putting the cars anywhere between these coordinates
-		middleCars[i] = width*i/middleCars.length + random(-width/12, width/12);
+		middleCars[i] =int( width*i/middleCars.length + random(-width/12, width/12));
 		//random colors
 		middleColor[i] = color(random(0, 255), random(0, 255), random(0, 255));
 	}
 	//setting up bottomcars
 	for (int i = 0; i < bottomCars.length; i++) {
 		//putting the cars anywhere between these coordinates
-		bottomCars[i] = width*i/bottomCars.length + random(-width/12, width/12);
+		bottomCars[i] = int(width*i/bottomCars.length + random(-width/12, width/12));
 		//random colors
 		bottomColor[i] = color(random(0, 255), random(0, 255), random(0, 255));
 	}
 	
 	//same for all logs, and randomly placing between coordinates
 	for (int i = 0; i < topLogs.length; i++) {
-		topLogs[i] = width*i/topLogs.length + random(-100, 100);
+		topLogs[i] = int(width*i/topLogs.length + random(-100, 100));
 	}
 	
 	for (int i = 0; i < middleLogs.length; i++) {
-		middleLogs[i] = width*i/middleLogs.length + random(-100, 100);
+		middleLogs[i] = int(width*i/middleLogs.length + random(-100, 100));
 	}
 	
 	for (int i = 0; i < bottomLogs.length; i++) {
-		bottomLogs[i] = width*i/bottomLogs.length + random(-100, 100);
+		bottomLogs[i] = int(width*i/bottomLogs.length + random(-100, 100));
 	}
 }
 
 //repeating music
-void repeat() {
-	music.play();
-}
+//void repeat() {
+//	music.play();
+//}

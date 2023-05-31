@@ -11,14 +11,14 @@ boolean playing = true;
 boolean ifWon = false;
 boolean stop = false;
 //loading images
-int avatar = loadImage("avatar.png");
+PImage avatar = loadImage("avatar.png");
 //int frame = loadImage("colo.png");
-int answer;
+//int answer;
 //x & y pos of character
 float guyX = (width/2)-(width/54.43);
 float guyY = height-(height/9);
 //width and height of logs and cars
-int logWidth = random(100,120);
+int logWidth = int(random(100,120));
 int logHeight = 50;
 int grassHeight = height/9;
 int largeHeight = height/3;
@@ -33,12 +33,12 @@ int [] middleLogs = new int [floor(width/300)];
 int [] bottomLogs = new int [floor(width/300)];
 int [] yCoord;
 //randomizing speeds of cars and logs
-int topCarSpeed = int(random(1, 2));
-int middleCarSpeed = int(random(1, 2));
-int bottomCarSpeed = int(random(1, 2));
-int topLogSpeed = int(random(1, 2));
-int middleLogSpeed = int(random(1, 2));
-int bottomLogSpeed = int(random(1, 2));
+float topCarSpeed = (random(1, 2));
+float middleCarSpeed = (random(1, 2));
+float bottomCarSpeed = (random(1, 2));
+float topLogSpeed = (random(1, 2));
+float middleLogSpeed = (random(1, 2));
+float bottomLogSpeed = (random(1, 2));
 //setting if on the log to false
 boolean onLog = false;
 //colors for cars (randomized)
@@ -60,5 +60,5 @@ int click  = width/30;
 int level = 1;
 boolean lostGame = false;
 boolean wonLevel = false;
-int tx = guyX;
-int ty = guyY;
+float tx = guyX;
+float ty = guyY;
