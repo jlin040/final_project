@@ -4,22 +4,22 @@ void setup () {
 	textAlign(CENTER, CENTER);
 	//print(window.innerWidth + ", " + window.innerHeight);
 	//prompt for music
-	answer = prompt("Would you like to have music? (yes/no)");
+	//answer = prompt("Would you like to have music? (yes/no)");
 	//center of text is the coordinates
 	textAlign(CENTER, CENTER);
 	//setting up music
-	music = new Audio();
-	music.setAttribute("src", "jackpot.mp3");
-	music.play();
-	//repeating
-	music.addEventListener("ended", repeat);
-	//if the answer is one of these, then play music
-	if (answer == "y" || answer == "yes" || answer == "Yes" || answer == "YES"){
-		playing = true;
-		//otherwise, stop it
-	}else{
-		music.pause();
-	}	
+	//music = new Audio();
+	//music.setAttribute("src", "jackpot.mp3");
+	//music.play();
+	////repeating
+	//music.addEventListener("ended", repeat);
+	////if the answer is one of these, then play music
+	//if (answer == "y" || answer == "yes" || answer == "Yes" || answer == "YES"){
+	//	playing = true;
+	//	//otherwise, stop it
+	//}else{
+	//	music.pause();
+	//}	
 	// win = new Audio();
 	// win.setAttribute("src", "Ta_Da-SoundBible_com-1884170640.mp3");
 	// beep = new Audio();

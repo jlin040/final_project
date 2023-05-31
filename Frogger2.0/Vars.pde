@@ -15,8 +15,8 @@ int avatar = loadImage("avatar.png");
 //int frame = loadImage("colo.png");
 int answer;
 //x & y pos of character
-guyX = (width/2)-(width/54.43);
-guyY = height-(height/9);
+float guyX = (width/2)-(width/54.43);
+float guyY = height-(height/9);
 //width and height of logs and cars
 int logWidth = random(100,120);
 int logHeight = 50;
@@ -31,14 +31,14 @@ int [] bottomCars = new int [floor(width/300)];
 int [] topLogs = new int [floor(width/300)];
 int [] middleLogs = new int [floor(width/300)];
 int [] bottomLogs = new int [floor(width/300)];
-int [] yCoord = [];
+int [] yCoord;
 //randomizing speeds of cars and logs
-int topCarSpeed = random(1, 2);
-int middleCarSpeed = random(1, 2);
-int bottomCarSpeed = random(1, 2);
-int topLogSpeed = random(1, 2);
-int middleLogSpeed = random(1, 2);
-int bottomLogSpeed = random(1, 2);
+int topCarSpeed = int(random(1, 2));
+int middleCarSpeed = int(random(1, 2));
+int bottomCarSpeed = int(random(1, 2));
+int topLogSpeed = int(random(1, 2));
+int middleLogSpeed = int(random(1, 2));
+int bottomLogSpeed = int(random(1, 2));
 //setting if on the log to false
 boolean onLog = false;
 //colors for cars (randomized)
@@ -50,7 +50,7 @@ int difficulty = 5;
 //setting life to 3
 int life = 3;
 //setting score to -1 because it adds 1 at start
-int score = 0;
+//int score = 0;
 // int minY = Infinity;
 //if game end, cannot move keys
 boolean gameEnd = false;

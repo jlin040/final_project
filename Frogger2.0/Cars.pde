@@ -7,7 +7,7 @@ void drawCar (int x, int y, int lane, int index){
 	//wheel width, x and y of coordinates
 	int wheelWidth = 20;
 	int wheelHeight = 20; 
-	int wheelX = carWidth/3.5;
+	int wheelX = int(carWidth/3.5);
 	int wheelY = carHeight/2 - wheelWidth/5;
 	rectMode(CENTER);
 	//drawing wheels
@@ -39,17 +39,17 @@ void addCar() {
 		middleCars.push(0);
 		bottomCars.push(0);
 		for (int i = 0; i < topCars.length; i++) {
-			topCars[i] = width*i/topCars.length + random(-width/12, width/12);
+			topCars[i] = int(width*i/topCars.length + random(-width/12, width/12));
 			topColor[i] = color(random(0, 255), random(0, 255), random(0, 255));
 		}
 
 		for (int i = 0; i < middleCars.length; i++) {
-			middleCars[i] = width*i/middleCars.length + random(-width/12, width/12);
+			middleCars[i] = int(width*i/middleCars.length + random(-width/12, width/12));
 			middleColor[i] = color(random(0, 255), random(0, 255), random(0, 255));
 		}
 
 		for (int i = 0; i < bottomCars.length; i++) {
-			bottomCars[i] = width*i/bottomCars.length + random(-width/12, width/12);
+			bottomCars[i] = int(width*i/bottomCars.length + random(-width/12, width/12));
 			bottomColor[i] = color(random(0, 255), random(0, 255), random(0, 255));
 		}
 	}
