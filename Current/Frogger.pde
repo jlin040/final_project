@@ -20,7 +20,13 @@ boolean gameStarted = false;
 float x;
 float y;
 float speed;
-
+int score;
+int highScore;
+int high;
+int score(){
+  high = Math.max(score, high);
+  return high;
+}
 void frog() {
   fill(100, 100, 100);
   rect(x*50+5, y*50+5, 40, 40);
@@ -28,6 +34,7 @@ void frog() {
 
 
 void draw() {
+  background(#528148);
   noStroke();
 
   //for (Lane l: screen) {
@@ -69,8 +76,22 @@ screen.get(i).display(c);
   
   frog();
   
-      
+  displayScore();
+  
+     
 }
+
+void displayScore() {
+  PFont scoreFont = createFont("Arial", 32, true);
+  textAlign(RIGHT, TOP);
+  textFont(scoreFont);
+  fill(255);
+  int s = score;
+  text("Score: " + s, 775, 40);
+  if (s > highScore) highScore = s;
+  text("High Score: " + highScore, 775, 80);
+}
+
 int  ison(float left, float y) {
     color c = get(int(left-.5), int(y+10));
     color v = get(int(left+40+1), int(y+10));
@@ -94,6 +115,8 @@ void reset(){
   x = 7;
   this.y=17;
   gameStarted = false;
+  score = 0;
+  high = 0;
   
   
 }
@@ -115,16 +138,23 @@ void keyPressed() {
     gameStarted = true;
     x++;
   }
-  if (keyCode == UP || keyCode == 'W') {
+  if (keyCode == UP || keyCode == 'W' || keyCode == 'Q' || keyCode == 'E') {
+    if (keyCode == 'Q') x--;
+    if (keyCode == 'E') x++;
     gameStarted = true;
     y--;
-     //for (int i = 0; i < screen.size(); i++) {
-     //screen.get(i).y+=1;    
-     //}
+    //y-=.4;
+    // for (int i = 0; i < screen.size(); i++) {
+    // screen.get(i).y+=30; 
+     
+    // }
+    // y-=30/50;
+    score++;
   }
   if (keyCode == DOWN || keyCode == 'S') {
     gameStarted = true;
     y++;
+    score--;
   }
   
 }

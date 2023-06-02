@@ -18,7 +18,7 @@ boolean gameStarted = false;
 
 float x;
 float y;
-float speed;
+float speed = 0;
 
 void frog() {
   fill(100, 100, 100);
@@ -32,7 +32,7 @@ void draw() {
     color c = colors[screen.get(i).type];
     fill(c);
     rect(0, screen.get(i).y, width, tile);
-    if (gameStarted ) screen.get(i).y+=.3;
+    if (gameStarted ) screen.get(i).y+=speed;
     if (screen.get(i).y> height) {
       screen.remove(i);
       screen.add(0, new Lane((int) random(3), (float)( (random(3)+1)*Math.pow(-1, (int)random(2))), (int) constrain(random(8), 3, 4), i*tile-200));
@@ -52,7 +52,7 @@ void draw() {
     //if(screen.get(i).y+100> height){
     //  screen.add(0,new Lane((int) random(3), random(1), (int) random(13), i*tile-100));}
   }
-  if (gameStarted) y+=(.3/50);
+  if (gameStarted) y+=(speed/50);
   //for (Lane l: screen) {
   //  if (y == l.y) {
   //    for (Obstacle o: l.row) {
