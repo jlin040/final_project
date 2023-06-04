@@ -15,12 +15,14 @@ void setup() {
  
 color[] colors;
 
+boolean firstTry = true;
 boolean gameStarted = false;
 
 float x;
 float y;
 float speed;
 int score;
+int lastHighScore;
 int highScore;
 int high;
 int score(){
@@ -76,7 +78,8 @@ screen.get(i).display(c);
   
   frog();
   
-  displayScore();
+  if (firstTry) firstTry();
+  else displayScore();
   //speed=.3;
   
      
@@ -91,6 +94,20 @@ void displayScore() {
   text("Score: " + s, 775, 40);
   if (s > highScore) highScore = s;
   text("High Score: " + highScore, 775, 80);
+}
+
+void firstTry() {
+  PFont titleFont = createFont("Arial", 80, true);
+  PFont textFont = createFont("Arial", 24, true);
+  textAlign(CENTER, TOP);
+  textFont(titleFont);
+  fill(255);
+  text("FROGGER", 400, 50);
+  textFont(textFont);
+  text("Dodge cars and cross rivers to make it as far as possible!", 400, 300);
+  text("Use WASD or arrow keys to leap!", 400, 350);
+  text("(Also try Q or E to leap diagonally, it may come in handy)", 400, 400);
+  text("Press any key to start.", 400, 750);
 }
 
 int  ison(float left, float y) {
@@ -131,6 +148,7 @@ void generateLanes() {
   screen.add( new Lane(0, 0, 2, height-tile));
 }
 void keyPressed() {
+  firstTry = false;
   if (keyCode == LEFT || keyCode == 'A') {
     gameStarted = true;
     x--;
