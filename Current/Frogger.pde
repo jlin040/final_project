@@ -17,6 +17,7 @@ color[] colors;
 
 boolean firstTry = true;
 boolean gameStarted = false;
+boolean gameOver = false;
 
 float x;
 float y;
@@ -54,10 +55,12 @@ void draw() {
           x+= .1/(180);
    
     }
-    else if(ison(x*50+5, y *50+5)==0){}
-    else{
-     
-        reset();}}
+    else if(ison(x*50+5, y *50+5)==0) {}
+    else {
+      gameStarted = false;
+      gameOver = true;
+      }
+    }
     
         
   
@@ -79,6 +82,7 @@ screen.get(i).display(c);
   frog();
   
   if (firstTry) firstTry();
+  else if (gameOver) gameOver();
   else displayScore();
   //speed=.3;
   
@@ -110,6 +114,24 @@ void firstTry() {
   text("Press any key to start.", 400, 750);
 }
 
+void gameOver() {
+  background(#528148);
+  PFont GameOverFont = createFont("Arial", 80, true);
+  PFont scoreFont = createFont("Arial", 64, true);
+  PFont textFont = createFont("Arial", 24, true);
+  textAlign(CENTER, TOP);
+  fill(255);
+  textFont(GameOverFont);
+  text("GAME OVER!", 400, 50);
+  textFont(scoreFont);
+  text("Score: " + score(), 400, 150);
+  textFont(textFont);
+  if (score() > lastHighScore) {
+    text("(new record!)", 400, 250);
+  }
+  text("Press any key to restart.", 400, 750);
+}
+
 int  ison(float left, float y) {
     color c = get(int(left-.5), int(y+10));
     color v = get(int(left+40+1), int(y+10));
@@ -132,7 +154,6 @@ void reset(){
   speed =.3;
   x = 7;
   this.y=17;
-  gameStarted = false;
   score = 0;
   high = 0;
   
@@ -149,27 +170,34 @@ void generateLanes() {
 }
 void keyPressed() {
   firstTry = false;
-  if (keyCode == LEFT || keyCode == 'A') {
-    gameStarted = true;
-    x--;
-  }
-  if (keyCode == RIGHT || keyCode == 'D') {
-    gameStarted = true;
-    x++;
-  }
-  if (keyCode == UP || keyCode == 'W' || keyCode == 'Q' || keyCode == 'E') {
-    if (keyCode == 'Q') x--;
-    if (keyCode == 'E') x++;
-    gameStarted = true;
-    y--;
-    //y-=.4;
-     speed=.7;
-    score++;
-  }
-  if (keyCode == DOWN || keyCode == 'S') {
-    gameStarted = true;
-    y++;
-    score--;
+  if (gameOver) {
+    reset();
+    gameOver = false;
+    lastHighScore = highScore;
+  } 
+  else {
+    if (keyCode == LEFT || keyCode == 'A') {
+      gameStarted = true;
+      x--;
+    }
+    if (keyCode == RIGHT || keyCode == 'D') {
+      gameStarted = true;
+      x++;
+    }
+    if (keyCode == UP || keyCode == 'W' || keyCode == 'Q' || keyCode == 'E') {
+      if (keyCode == 'Q') x--;
+      if (keyCode == 'E') x++;
+      gameStarted = true;
+      y--;
+      //y-=.4;
+       speed=.7;
+      score++;
+    }
+    if (keyCode == DOWN || keyCode == 'S') {
+      gameStarted = true;
+      y++;
+      score--;
+    }
   }
   
 }
