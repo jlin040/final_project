@@ -45,22 +45,22 @@ void draw() {
   //  }
   //}
 
-  if (gameStarted) y+=.3/50;
+  if (gameStarted) y+=speed/50;
   for (int i = 0; i < screen.size(); i++) {
     color c = colors[screen.get(i).type];
-    if (ison(x*50+5, y *50+5)==2) {
+    if (gameStarted){if (ison(x*50+5, y *50+5)==2) {
           x+= .1/(180);
    
     }
     else if(ison(x*50+5, y *50+5)==0){}
     else{
      
-        reset();}
+        reset();}}
     
         
   
-    if (gameStarted ) screen.get(i).y+=.3;
-    if (screen.get(i).y> height) {
+    if (gameStarted ) screen.get(i).y+=speed;
+    if (screen.get(i).y> height+50) {
       screen.remove(i);
       screen.add(0, new Lane((int) random(3), (float)( (random(3)+1)*Math.pow(-1, (int)random(2))), (int) constrain(random(8), 3, 4), i*tile-50));
     }
@@ -77,6 +77,7 @@ screen.get(i).display(c);
   frog();
   
   displayScore();
+  //speed=.3;
   
      
 }
@@ -86,7 +87,7 @@ void displayScore() {
   textAlign(RIGHT, TOP);
   textFont(scoreFont);
   fill(255);
-  int s = score;
+  int s = score();
   text("Score: " + s, 775, 40);
   if (s > highScore) highScore = s;
   text("High Score: " + highScore, 775, 80);
@@ -123,7 +124,7 @@ void reset(){
 
 void generateLanes() {
    screen = new ArrayList<Lane>();
-  for ( int i = 0; i< 19; i++) {
+  for ( int i = 0; i< 20; i++) {
     screen.add(new Lane((int) random(3), (float)( (random(3)+1)*Math.pow(-1, (int)random(2))), (int) constrain(random(8), 3, 4), i*tile-50));
     
   }
@@ -144,11 +145,7 @@ void keyPressed() {
     gameStarted = true;
     y--;
     //y-=.4;
-    // for (int i = 0; i < screen.size(); i++) {
-    // screen.get(i).y+=30; 
-     
-    // }
-    // y-=30/50;
+     speed=.7;
     score++;
   }
   if (keyCode == DOWN || keyCode == 'S') {
