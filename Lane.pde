@@ -1,22 +1,47 @@
 class Lane {
-  Lane(int t, float s, int num, float y) {
-    type = t;
-    lanespeedX = s;
-    numob = num;
-    this.y = y;
-    w=constrain(random(width)/numob, 60, 90);
-  }
-  Lane(int t) {
-    type = t;
-  }
-  ArrayList<Obstacle> row;
+  
+  //Lane(int t) {
+  //  type = t;
+  //}
+  float[] xcoords;
   float y;
 
   int numob;
+  int maxw;
   float w;
   float lanespeedX;
   int type;// 0 for nothing, 1 for cars, 2 for logs ( maybe implement trains, lily pads)
   float speed;
+  //color[] colors;
+  //color[] obColors;
+  
+  Lane(int t, float s, int num, float y,float ss) {
+  type = t;
+  lanespeedX = s;
+  numob = num;
+  this.y = y;
+  speed = ss;
+  w=constrain(random(width)/numob, 60, 70);
+  xcoords = new float[numob];
+  for (int i = 0; i < numob; i++) {
+    xcoords[i] = i*maxw+lanespeedX;
+  }
+  //int maxw = width/numob;
+  //for (int i = -1; i < numob; i++) {
+  //  fill(obColors[type - 1]);
+  //  rect(i*maxw+lanespeedX, y, w, 50);
+    //colors = new color[]{#528148, #333F48, #277EBF};
+    //obColors = new color[]{#000000, #623322};
+  }
+  
+  void display(color c) {
+    fill(c);
+    rect(0, y, 800, 50);
+  }
+  
+  void placeObstacles() {
+  
+  }
 
 
   void car() {
@@ -28,9 +53,9 @@ class Lane {
         for (int i=-2; i < numob; i++) {
 
           fill(0, 0, 0);
-          rect(i*maxw+lanespeedX, y, w, 50);
+          rect(i*maxw+lanespeedX, y+5, w, 40);
           if (lanespeedX>0) {
-            lanespeedX+=.1;
+            lanespeedX+=speed;
             if (Math.abs(lanespeedX)>=maxw)
               lanespeedX=.0000001;
           }
@@ -39,8 +64,8 @@ class Lane {
       if (lanespeedX<0) {
         for (int i=0; i < numob+2; i++) {
           fill(0, 0, 0);
-          rect(i*maxw+lanespeedX, y, w, 50);
-          lanespeedX-=.1;
+          rect(i*maxw+lanespeedX, y+5, w, 40);
+          lanespeedX-=speed;
           if (Math.abs(lanespeedX)>=maxw)
             lanespeedX=-.000001;
         }
@@ -52,21 +77,13 @@ class Lane {
 
       for (int i=-2; i < numob; i++) {
         fill(#623322);
-        rect(i*maxw+lanespeedX, y, w, 50);
+        rect(i*maxw+lanespeedX, y+5, 90, 40);
 
-        lanespeedX+=.1;
+        lanespeedX+=speed;
         if (lanespeedX>=maxw)
           lanespeedX=0;
       }
     }
   }
-  boolean ison(float left, float y) {
-    color c = get(int(left-1), int(y+10));
-    color v = get(int(left+1+w), int(y+10));
-    if ((c ==#277EBF && v == #277EBF) ||(c==#000000 || v ==#000000)) {
-      System.out.println("gameover");
-      return false;
-    }
-    return true;
-  }
+  
 }
