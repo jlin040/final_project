@@ -1,8 +1,5 @@
 class Lane {
   
-  //Lane(int t) {
-  //  type = t;
-  //}
   float[] xcoords;
   float y;
 
@@ -12,26 +9,18 @@ class Lane {
   float lanespeedX;
   int type;// 0 for nothing, 1 for cars, 2 for logs ( maybe implement trains, lily pads)
   float speed;
-  //color[] colors;
-  //color[] obColors;
   
   Lane(int t, float s, int num, float y,float ss) {
-  type = t;
-  lanespeedX = s;
-  numob = num;
-  this.y = y;
-  speed = ss;
-  w=constrain(random(width)/numob, 60, 70);
-  xcoords = new float[numob];
-  for (int i = 0; i < numob; i++) {
-    xcoords[i] = i*maxw+lanespeedX;
-  }
-  //int maxw = width/numob;
-  //for (int i = -1; i < numob; i++) {
-  //  fill(obColors[type - 1]);
-  //  rect(i*maxw+lanespeedX, y, w, 50);
-    //colors = new color[]{#528148, #333F48, #277EBF};
-    //obColors = new color[]{#000000, #623322};
+    type = t;
+    lanespeedX = s;
+    numob = num;
+    this.y = y;
+    speed = ss;
+    w=constrain(random(width)/numob, 60, 70);
+    xcoords = new float[numob];
+    for (int i = 0; i < numob; i++) {
+      xcoords[i] = i*maxw+lanespeedX;
+    }
   }
   
   void display(color c) {
@@ -39,11 +28,6 @@ class Lane {
     rect(0, y, 800, 50);
   }
   
-  void placeObstacles() {
-  
-  }
-
-
   void car() {
 
     if (type == 1) {
