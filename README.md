@@ -1,5 +1,4 @@
-# final_project
-Final Project with Frogger
+# Frogger
 
 The game is a modern interpretation of the classic arcade game Frogger. 
 Players take control of a cute frog and must guide it safely across a busy road and treacherous rivers to reach its destination. 
