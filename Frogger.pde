@@ -19,7 +19,6 @@ boolean firstTry = true;
 boolean gameStarted = false;
 boolean gameOver = false;
 
-//int curLane = 18;
 float x;
 float y;
 float speed;
@@ -103,53 +102,40 @@ void draw() {
   background(#528148);
   noStroke();
 
-  //for (Lane l: screen) {
-  //  if (y == l.y) {
-  //    for (Obstacle o: l.row) {
-  //      if (x == o.x) x += 2;
-  //    }
-  //  }
-  //}
-
   if (gameStarted) y+=speed/50;
   for (int i = 0; i < screen.size(); i++) {
     color c = colors[screen.get(i).type];
-    if (gameStarted){if (ison(x*50+5, y *50+5)==2) {
+    if (gameStarted){
+      if (ison(x*50+5, y *50+5)==2) {
           //x+= .1/(180);
    
-    }
-    else if(ison(x*50+5, y *50+5)==0) {}
-    else {
-      gameStarted = false;
-      gameOver = true;
       }
+      else if(ison(x*50+5, y *50+5)==0) {}
+      else {
+        gameStarted = false;
+        gameOver = true;
+        }
     }
     
     if(x*50 > width|| x*50 +50 < 0|| y *50>height){    
-  gameStarted = false;
-      gameOver = true;}
+      gameStarted = false;
+      gameOver = true;
+    }
     if (gameStarted ) screen.get(i).y+=speed;
     if (screen.get(i).y> height+50) {
       screen.remove(i);
       screen.add(0, new Lane((int) random(3), (float)( (random(3)+1)*Math.pow(-1, (int)random(2))), (int) constrain(random(8), 3, 4), i*tile-50,random(.3)+.001));
-      //curLane++;
     }
-screen.get(i).display(c);
+    screen.get(i).display(c);
     screen.get(i).car();
-    //if(y*50 == screen.get(i).y){
-    
-   
-    
-}
-    //if(screen.get(i).y+100> height){
-    //  screen.add(0,new Lane((int) random(3), random(1), (int) random(13), i*tile-100));}
+       
+  }
   
   frog();
   
   if (firstTry) firstTry();
   else if (gameOver) gameOver();
   else displayScore();
-  //speed=.3;
   
      
 }
@@ -201,14 +187,11 @@ int  ison(float left, float y) {
     color c = get(int(left-.5), int(y+10));
     color v = get(int(left+40+1), int(y+10));
     if ((c ==#277EBF && v == #277EBF)) {
-      //System.out.println("gameover");
       return 1;
     }
     else if(c==#000000 || v ==#000000){
-    //System.out.println("gameover");
       return 1;}
     else if (c==#623322 || v ==#623322){
-    //  x +=  laneSpeedX / 50;
       return 2;}
     return 0;
   }
@@ -222,7 +205,6 @@ void reset(){
   this.y=17;
   score = 0;
   high = 0;
-  //curLane = 18;
   
   
   
@@ -257,17 +239,12 @@ void keyPressed() {
       if (keyCode == 'E') x++;
       gameStarted = true;
       y--;
-      //y-=.4;
-       //
       score++;
-      //curLane--;
     }
     if (keyCode == DOWN || keyCode == 'S') {
       gameStarted = true;
       y++;
       score--;
-      //curLane++;
     }
   }
-  //System.out.println(curLane);
 }
